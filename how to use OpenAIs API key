@@ -1,0 +1,20 @@
+from openai import OpenAI
+import os
+
+api_key = os.environ.get('your key here')
+if api_key is None:
+    raise ValueError("No API key found in environment variables")
+
+client = OpenAI(api_key=api_key)
+
+chat_completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "your prompt here",
+        }
+    ],
+    model="gpt-3.5-turbo",
+)
+
+print(chat_completion)
